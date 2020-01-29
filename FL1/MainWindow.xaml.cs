@@ -51,56 +51,74 @@ namespace FL1
                 isWide = true;
             }
         }
-        private string addition()
+        private string addition(TextBox fstLeft, TextBox fstRight, TextBox sndLeft, TextBox sndRight)
         {
-            return (float.Parse(aLeft.Text) + float.Parse(bLeft.Text)).ToString() + ' ' + (float.Parse(aRight.Text) + float.Parse(bRight.Text)).ToString();
+            return (float.Parse(fstLeft.Text) + float.Parse(sndLeft.Text)).ToString() + ' ' + (float.Parse(fstRight.Text) + float.Parse(sndRight.Text)).ToString();
         }
-        private string subtraction()
+        private string subtraction(TextBox fstLeft, TextBox fstRight, TextBox sndLeft, TextBox sndRight)
         {
-            return (float.Parse(aLeft.Text) - float.Parse(bRight.Text)).ToString() + ' ' + (float.Parse(aRight.Text) - float.Parse(bLeft.Text)).ToString();
+            return (float.Parse(fstLeft.Text) - float.Parse(sndRight.Text)).ToString() + ' ' + (float.Parse(fstRight.Text) - float.Parse(sndLeft.Text)).ToString();
         }
-        private string multiplication()
+        private string multiplication(TextBox fstLeft, TextBox fstRight, TextBox sndLeft, TextBox sndRight)
         {
             float[] comb = new float[4];
             
-            comb[0] = float.Parse(aLeft.Text) * float.Parse(bLeft.Text);
-            comb[1] = float.Parse(aLeft.Text) * float.Parse(bRight.Text);
-            comb[2] = float.Parse(aRight.Text) * float.Parse(bLeft.Text);
-            comb[3] = float.Parse(aRight.Text) * float.Parse(bRight.Text);
+            comb[0] = float.Parse(fstLeft.Text) * float.Parse(sndLeft.Text);
+            comb[1] = float.Parse(fstLeft.Text) * float.Parse(sndRight.Text);
+            comb[2] = float.Parse(fstRight.Text) * float.Parse(sndLeft.Text);
+            comb[3] = float.Parse(fstRight.Text) * float.Parse(sndRight.Text);
 
             return comb.Min().ToString() + ' ' + comb.Max().ToString();
         }
-        private string division()
+        private string division(TextBox fstLeft, TextBox fstRight, TextBox sndLeft, TextBox sndRight)
         {
             float[] comb = new float[4];
 
-            comb[0] = float.Parse(aLeft.Text) / float.Parse(bLeft.Text);
-            comb[1] = float.Parse(aLeft.Text) / float.Parse(bRight.Text);
-            comb[2] = float.Parse(aRight.Text) / float.Parse(bLeft.Text);
-            comb[3] = float.Parse(aRight.Text) / float.Parse(bRight.Text);
+            comb[0] = float.Parse(fstLeft.Text) / float.Parse(sndLeft.Text);
+            comb[1] = float.Parse(fstLeft.Text) / float.Parse(sndRight.Text);
+            comb[2] = float.Parse(fstRight.Text) / float.Parse(sndLeft.Text);
+            comb[3] = float.Parse(fstRight.Text) / float.Parse(sndRight.Text);
 
             return comb.Min().ToString() + ' ' + comb.Max().ToString();
         }
-        private string displayA()
+        private string display(TextBox left, TextBox right)
         {
-            return (float.Parse(aRight.Text)*(-1)).ToString() + ' ' + (float.Parse(aLeft.Text) * (-1)).ToString();
+            return (float.Parse(right.Text)*(-1)).ToString() + ' ' + (float.Parse(left.Text) * (-1)).ToString();
         }
-        private string inversionB()
+        private string inversion(TextBox left, TextBox right)
         {
-            return (1 / float.Parse(bRight.Text)).ToString() + ' ' + (1 / float.Parse(bLeft.Text)).ToString();
+            return (1 / float.Parse(right.Text)).ToString() + ' ' + (1 / float.Parse(left.Text)).ToString();
         }
 
         private void Calculate_Click(object sender, RoutedEventArgs e)
         {
             switch (this.operationsBox.SelectedIndex)
             {
-                case 0: this.result.Text = addition(); break;
-                case 1: this.result.Text = subtraction(); break;
-                case 2: this.result.Text = multiplication(); break;
-                case 3: this.result.Text = division(); break;
-                case 4: this.result.Text = displayA(); break;
-                case 5: this.result.Text = inversionB(); break;
+                case 0: this.result.Text = addition(aLeft, aRight, bLeft, bRight); break;
+                case 1: this.result.Text = subtraction(aLeft, aRight, bLeft, bRight); break;
+                case 2: this.result.Text = multiplication(aLeft, aRight, bLeft, bRight); break;
+                case 3: this.result.Text = division(aLeft, aRight, bLeft, bRight); break;
+                case 4: this.result.Text = display(aLeft, aRight); break;
+                case 5: this.result.Text = inversion(bLeft, bRight); break;
+                case 6: this.result.Text = addition(aLeft, aRight, additional, additional); break;
+                case 7: this.result.Text = subtraction(bLeft, bRight, additional, additional); break;
+                case 8: this.result.Text = multiplication(aLeft, aRight, additional, additional); break;
+                case 9: this.result.Text = division(bLeft, bRight, additional, additional); break;
             }
+        }
+
+        private void ToAResult_Click(object sender, RoutedEventArgs e)
+        {
+            string []tmp = result.Text.Split(' ');
+            aLeft.Text = tmp[0];
+            aRight.Text = tmp[1];
+        }
+
+        private void ToBResult_Click(object sender, RoutedEventArgs e)
+        {
+            string[] tmp = result.Text.Split(' ');
+            bLeft.Text = tmp[0];
+            bRight.Text = tmp[1];
         }
     }
 }
