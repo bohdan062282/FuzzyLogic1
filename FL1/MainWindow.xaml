@@ -9,8 +9,8 @@
         MouseDown="Window_MouseDown"
         Title="MainWindow" Height="450" Width="360" ResizeMode="NoResize" Visibility="Visible" WindowStyle="None" Background="MediumPurple" Foreground="White">
     <Grid>
-        <Grid x:Name="g1" Width="360" VerticalAlignment="Top" HorizontalAlignment="Left" Height="450">
-            <ComboBox x:Name="operationsBox" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,24,0,0" Width="160" Foreground="White" Height="32" Grid.RowSpan="14" FontSize="16" MaxDropDownHeight="240">
+        <Grid x:Name="g1" Width="360" VerticalAlignment="Top" HorizontalAlignment="Left" Height="540">
+            <ComboBox x:Name="operationsBox" SelectionChanged="OperationsBox_SelectionChanged" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,24,0,0" Width="160" Foreground="White" Height="32" Grid.RowSpan="14" FontSize="16" MaxDropDownHeight="240">
                 <Label Content="Додавання" Foreground="White"/>
                 <Label Content="Віднімання" Foreground="White"/>
                 <Label Content="Множення" Foreground="White"/>
@@ -34,18 +34,18 @@
             </Grid>
             <Button x:Name="calculate" Margin="0,274,0,0" VerticalAlignment="Top" HorizontalAlignment="Center" Content="Обрахувати" Click="Calculate_Click"/>
             <Label Content="Результат:" Foreground="White" FontSize="18" HorizontalAlignment="Center" Margin="0,312,0,0"/>
-            <TextBox x:Name="result" Text="apmfwwa" Foreground="DeepSkyBlue" FontSize="18" HorizontalAlignment="Center" Margin="0,346,0,0"/>
+            <TextBlock x:Name="result" Text="apmfwwa" Foreground="DeepSkyBlue" FontSize="18" HorizontalAlignment="Center" Margin="0,346,0,0" Height="32" VerticalAlignment="Top"/>
             <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Width="264" Margin="0,386,0,0" Height="40">
                 <Button x:Name="toAResult" Content="Результат в А" Width="120" HorizontalAlignment="Left" Click="ToAResult_Click">
-                    
+
                 </Button>
                 <Button x:Name="toBResult" Content="Результат в Б"  Width="120" HorizontalAlignment="Right" Click="ToBResult_Click">
-                    
+
                 </Button>
             </Grid>
-
+            <Label Content="Число для операцій:" Foreground="White" FontSize="18" HorizontalAlignment="Center" Margin="0,440,0,0"/>
+            <TextBox Margin="0,478,0,0" x:Name="additional" Width="94" VerticalAlignment="Top" HorizontalAlignment="Center" TextAlignment="Center" Foreground="White" FontSize="18"/>
         </Grid>
-        <TextBox Margin="0,500,0,0" x:Name="additional" Width="94" VerticalAlignment="Top" HorizontalAlignment="Center" TextAlignment="Center" Foreground="White" FontSize="18"/>
         <Button x:Name="powerButton" HorizontalAlignment="Right" VerticalAlignment="Top" BorderThickness="0" Background="MediumVioletRed" BorderBrush="{x:Null}" materialDesign:ShadowAssist.ShadowDepth="Depth0" Width="50" Height="32" Click="powerButton_Click">
             <materialDesign:PackIcon Kind="Power" Width="20" Height="20"></materialDesign:PackIcon>
         </Button>

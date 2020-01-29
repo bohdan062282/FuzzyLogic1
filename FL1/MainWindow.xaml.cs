@@ -51,6 +51,11 @@ namespace FL1
                 isWide = true;
             }
         }
+        private void checkInterv(TextBox left, TextBox right)
+        {
+            if (float.Parse(left.Text) < float.Parse(right.Text)) return;
+            else throw new Exception();
+        }
         private string addition(TextBox fstLeft, TextBox fstRight, TextBox sndLeft, TextBox sndRight)
         {
             return (float.Parse(fstLeft.Text) + float.Parse(sndLeft.Text)).ToString() + ' ' + (float.Parse(fstRight.Text) + float.Parse(sndRight.Text)).ToString();
@@ -92,19 +97,28 @@ namespace FL1
 
         private void Calculate_Click(object sender, RoutedEventArgs e)
         {
-            switch (this.operationsBox.SelectedIndex)
+            try
             {
-                case 0: this.result.Text = addition(aLeft, aRight, bLeft, bRight); break;
-                case 1: this.result.Text = subtraction(aLeft, aRight, bLeft, bRight); break;
-                case 2: this.result.Text = multiplication(aLeft, aRight, bLeft, bRight); break;
-                case 3: this.result.Text = division(aLeft, aRight, bLeft, bRight); break;
-                case 4: this.result.Text = display(aLeft, aRight); break;
-                case 5: this.result.Text = inversion(bLeft, bRight); break;
-                case 6: this.result.Text = addition(aLeft, aRight, additional, additional); break;
-                case 7: this.result.Text = subtraction(bLeft, bRight, additional, additional); break;
-                case 8: this.result.Text = multiplication(aLeft, aRight, additional, additional); break;
-                case 9: this.result.Text = division(bLeft, bRight, additional, additional); break;
+                switch (this.operationsBox.SelectedIndex)
+                {
+                    case 0: this.result.Text = addition(aLeft, aRight, bLeft, bRight); break;
+                    case 1: this.result.Text = subtraction(aLeft, aRight, bLeft, bRight); break;
+                    case 2: this.result.Text = multiplication(aLeft, aRight, bLeft, bRight); break;
+                    case 3: this.result.Text = division(aLeft, aRight, bLeft, bRight); break;
+                    case 4: this.result.Text = display(aLeft, aRight); break;
+                    case 5: this.result.Text = inversion(bLeft, bRight); break;
+                    case 6: this.result.Text = addition(aLeft, aRight, additional, additional); break;
+                    case 7: this.result.Text = subtraction(bLeft, bRight, additional, additional); break;
+                    case 8: this.result.Text = multiplication(aLeft, aRight, additional, additional); break;
+                    case 9: this.result.Text = division(bLeft, bRight, additional, additional); break;
+                    default: throw new Exception();
+                }
             }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Невірні параметри!", "sosee");
+            }
+            
         }
 
         private void ToAResult_Click(object sender, RoutedEventArgs e)
@@ -119,6 +133,18 @@ namespace FL1
             string[] tmp = result.Text.Split(' ');
             bLeft.Text = tmp[0];
             bRight.Text = tmp[1];
+        }
+
+        private void OperationsBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if(operationsBox.SelectedIndex == 6 || operationsBox.SelectedIndex == 7 || operationsBox.SelectedIndex == 8 || operationsBox.SelectedIndex == 9)
+            {
+                this.Height = 540;
+            }
+            else
+            {
+                this.Height = 450;
+            }
         }
     }
 }
