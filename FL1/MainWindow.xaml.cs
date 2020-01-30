@@ -46,7 +46,7 @@ namespace FL1
             }
             else
             {
-                this.Width = 700;
+                this.Width = 720;
                 widerIcon.Kind = MaterialDesignThemes.Wpf.PackIconKind.ArrowLeft;
                 isWide = true;
             }
@@ -101,18 +101,20 @@ namespace FL1
             {
                 switch (this.operationsBox.SelectedIndex)
                 {
-                    case 0: this.result.Text = addition(aLeft, aRight, bLeft, bRight); break;
-                    case 1: this.result.Text = subtraction(aLeft, aRight, bLeft, bRight); break;
-                    case 2: this.result.Text = multiplication(aLeft, aRight, bLeft, bRight); break;
-                    case 3: this.result.Text = division(aLeft, aRight, bLeft, bRight); break;
-                    case 4: this.result.Text = display(aLeft, aRight); break;
-                    case 5: this.result.Text = inversion(bLeft, bRight); break;
-                    case 6: this.result.Text = addition(aLeft, aRight, additional, additional); break;
-                    case 7: this.result.Text = subtraction(bLeft, bRight, additional, additional); break;
-                    case 8: this.result.Text = multiplication(aLeft, aRight, additional, additional); break;
-                    case 9: this.result.Text = division(bLeft, bRight, additional, additional); break;
+                    case 0: checkInterv(aLeft, aRight); checkInterv(bLeft, bRight); this.result.Text = addition(aLeft, aRight, bLeft, bRight); break;
+                    case 1: checkInterv(aLeft, aRight); checkInterv(bLeft, bRight); this.result.Text = subtraction(aLeft, aRight, bLeft, bRight); break;
+                    case 2: checkInterv(aLeft, aRight); checkInterv(bLeft, bRight); this.result.Text = multiplication(aLeft, aRight, bLeft, bRight); break;
+                    case 3: checkInterv(aLeft, aRight); checkInterv(bLeft, bRight); this.result.Text = division(aLeft, aRight, bLeft, bRight); break;
+                    case 4: checkInterv(aLeft, aRight); this.result.Text = display(aLeft, aRight); break;
+                    case 5: checkInterv(bLeft, bRight); this.result.Text = inversion(bLeft, bRight); break;
+                    case 6: checkInterv(aLeft, aRight); this.result.Text = addition(aLeft, aRight, additional, additional); break;
+                    case 7: checkInterv(bLeft, bRight); this.result.Text = subtraction(bLeft, bRight, additional, additional); break;
+                    case 8: checkInterv(aLeft, aRight); this.result.Text = multiplication(aLeft, aRight, additional, additional); break;
+                    case 9: checkInterv(bLeft, bRight); this.result.Text = division(bLeft, bRight, additional, additional); break;
                     default: throw new Exception();
                 }
+                string[] tmp = result.Text.Split(' ');
+                if (float.Parse(tmp[0]) >= float.Parse(tmp[1])) throw new Exception();
             }
             catch(Exception ex)
             {
@@ -146,5 +148,6 @@ namespace FL1
                 this.Height = 450;
             }
         }
+
     }
 }
