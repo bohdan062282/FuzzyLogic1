@@ -18,6 +18,7 @@ namespace FL1
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
+    public class InvalidResultException : Exception {}
     public partial class MainWindow : Window
     {
         private bool isWide = false;
@@ -114,27 +115,47 @@ namespace FL1
                     default: throw new Exception();
                 }
                 string[] tmp = result.Text.Split(' ');
-                if (float.Parse(tmp[0]) >= float.Parse(tmp[1])) throw new Exception();
+                if (float.Parse(tmp[0]) >= float.Parse(tmp[1])) throw new InvalidResultException();
             }
-            catch(Exception ex)
+            catch (InvalidResultException)
             {
-                MessageBox.Show("Невірні параметри!", "sosee");
+                this.result.Text = null;
+                MessageBox.Show("Невірні параметри!", "Помилка!");
             }
-            
+            catch
+            {
+                MessageBox.Show("Невірні параметри!", "Помилка!");
+            }
+
         }
 
         private void ToAResult_Click(object sender, RoutedEventArgs e)
         {
-            string []tmp = result.Text.Split(' ');
-            aLeft.Text = tmp[0];
-            aRight.Text = tmp[1];
+            try
+            {
+                string[] tmp = result.Text.Split(' ');
+                aLeft.Text = tmp[0];
+                aRight.Text = tmp[1];
+            }
+            catch
+            {
+                MessageBox.Show("Невірні параметри!", "Помилка!");
+            }
         }
 
         private void ToBResult_Click(object sender, RoutedEventArgs e)
         {
-            string[] tmp = result.Text.Split(' ');
-            bLeft.Text = tmp[0];
-            bRight.Text = tmp[1];
+            try
+            {
+                string[] tmp = result.Text.Split(' ');
+                bLeft.Text = tmp[0];
+                bRight.Text = tmp[1];
+            }         
+            catch
+            {
+                MessageBox.Show("Невірні параметри!", "Помилка!");
+                
+            }
         }
 
         private void OperationsBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
