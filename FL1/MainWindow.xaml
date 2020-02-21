@@ -20,6 +20,7 @@
                 <Label Content="Віднімання від Б" Foreground="White"/>
                 <Label Content="Множення А на число" Foreground="White"/>
                 <Label Content="Ділення Б на число" Foreground="White"/>
+                <Label Content="Множення декількох інтервалів" Foreground="White"/>
             </ComboBox>
             <Label Content="Інтервал А" Foreground="White" FontSize="18" HorizontalAlignment="Center" Margin="0,72,0,0"/>
             <Grid HorizontalAlignment="Center" VerticalAlignment="Top" Width="240" Margin="0,114,0,0" Height="40">

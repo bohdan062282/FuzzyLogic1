@@ -64,3 +64,5 @@ C:\temp\FuzzyLogic1\FL1\obj\Debug\FL1.csproj.CoreCompileInputs.cache
 C:\temp\FuzzyLogic1\FL1\obj\Debug\FL1.csproj.CopyComplete
 C:\temp\FuzzyLogic1\FL1\obj\Debug\FL1.exe
 C:\temp\FuzzyLogic1\FL1\obj\Debug\FL1.pdb
+C:\Users\1810321\source\repos\FuzzyLogic1\FL1\obj\Debug\Window1.baml
+C:\Users\1810321\source\repos\FuzzyLogic1\FL1\obj\Debug\Window1.g.cs

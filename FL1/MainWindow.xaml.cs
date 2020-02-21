@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -76,6 +77,17 @@ namespace FL1
 
             return comb.Min().ToString() + ' ' + comb.Max().ToString();
         }
+        private void multMultiplication()
+        {
+            int count = int.Parse(additional.Text);
+            for(int i = 0; i < count; i++)
+            {
+
+                Window1 w = new Window1();
+                //while (w.IsActive) ;
+                this.result.Text = "sasi";
+            }
+        }
         private string division(TextBox fstLeft, TextBox fstRight, TextBox sndLeft, TextBox sndRight)
         {
             float[] comb = new float[4];
@@ -112,11 +124,12 @@ namespace FL1
                     case 7: checkInterv(bLeft, bRight); this.result.Text = subtraction(bLeft, bRight, additional, additional); break;
                     case 8: checkInterv(aLeft, aRight); this.result.Text = multiplication(aLeft, aRight, additional, additional); break;
                     case 9: checkInterv(bLeft, bRight); this.result.Text = division(bLeft, bRight, additional, additional); break;
+                    case 10: multMultiplication(); break;
                     default: throw new Exception();
                 }
                 string[] tmp = result.Text.Split(' ');
                 if (float.Parse(tmp[0]) >= float.Parse(tmp[1])) throw new InvalidResultException();
-            }
+        }
             catch (InvalidResultException)
             {
                 this.result.Text = null;
@@ -125,6 +138,7 @@ namespace FL1
             catch
             {
                 MessageBox.Show("Невірні параметри!", "Помилка!");
+                
             }
 
         }
@@ -153,14 +167,13 @@ namespace FL1
             }         
             catch
             {
-                MessageBox.Show("Невірні параметри!", "Помилка!");
-                
+                MessageBox.Show("Невірні параметри!", "Помилка!");             
             }
         }
 
         private void OperationsBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(operationsBox.SelectedIndex == 6 || operationsBox.SelectedIndex == 7 || operationsBox.SelectedIndex == 8 || operationsBox.SelectedIndex == 9)
+            if(operationsBox.SelectedIndex == 6 || operationsBox.SelectedIndex == 7 || operationsBox.SelectedIndex == 8 || operationsBox.SelectedIndex == 9 || operationsBox.SelectedIndex == 10)
             {
                 this.Height = 540;
             }
