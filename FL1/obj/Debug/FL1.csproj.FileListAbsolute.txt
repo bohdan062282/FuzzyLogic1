@@ -66,3 +66,15 @@ C:\temp\FuzzyLogic1\FL1\obj\Debug\FL1.exe
 C:\temp\FuzzyLogic1\FL1\obj\Debug\FL1.pdb
 C:\Users\1810321\source\repos\FuzzyLogic1\FL1\obj\Debug\Window1.baml
 C:\Users\1810321\source\repos\FuzzyLogic1\FL1\obj\Debug\Window1.g.cs
+C:\Users\1810321\source\repos\FuzzyLogic1\FL1\bin\Debug\OxyPlot.dll
+C:\Users\1810321\source\repos\FuzzyLogic1\FL1\bin\Debug\OxyPlot.Wpf.dll
+C:\Users\1810321\source\repos\FuzzyLogic1\FL1\bin\Debug\OxyPlot.xml
+C:\Users\1810321\source\repos\FuzzyLogic1\FL1\bin\Debug\OxyPlot.Wpf.xml
+C:\Users\1810321\source\repos\FuzzyLogic1\FL1\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\temp\FuzzyLogic1\FL1\bin\Debug\OxyPlot.dll
+C:\temp\FuzzyLogic1\FL1\bin\Debug\OxyPlot.Wpf.dll
+C:\temp\FuzzyLogic1\FL1\bin\Debug\OxyPlot.xml
+C:\temp\FuzzyLogic1\FL1\bin\Debug\OxyPlot.Wpf.xml
+C:\temp\FuzzyLogic1\FL1\obj\Debug\Window1.baml
+C:\temp\FuzzyLogic1\FL1\obj\Debug\Window1.g.cs
+C:\temp\FuzzyLogic1\FL1\obj\Debug\GeneratedInternalTypeHelper.g.cs

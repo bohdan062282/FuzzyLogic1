@@ -14,8 +14,37 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+using OxyPlot;
+
 namespace FL1
 {
+    public class MainViewModel
+    {
+        public MainViewModel()
+        {
+            this.Title = "Example 2";
+            this.Points1 = new List<DataPoint>
+                              {
+                                  new DataPoint(0, 4),
+                                  new DataPoint(10, 13),
+                                  new DataPoint(20, 15),
+                                  new DataPoint(30, 16),
+                                  new DataPoint(40, 12),
+                                  new DataPoint(50, 12)
+                              };
+            this.Points2 = new List<DataPoint>
+                              {
+                                  new DataPoint(0, 1),
+                                  new DataPoint(10, 13),
+                                  new DataPoint(40, 5)
+                              };
+        }
+
+        public string Title { get; private set; }
+
+        public IList<DataPoint> Points1 { get; private set; }
+        public IList<DataPoint> Points2 { get; private set; }
+    }
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
@@ -79,14 +108,14 @@ namespace FL1
         }
         private void multMultiplication()
         {
-            int count = int.Parse(additional.Text);
-            for(int i = 0; i < count; i++)
-            {
+            //int count = int.Parse(additional.Text);
+            //for(int i = 0; i < count; i++)
+            //{
 
-                Window1 w = new Window1();
-                //while (w.IsActive) ;
-                this.result.Text = "sasi";
-            }
+            //    Window1 w = new Window1();
+            //    //while (w.IsActive) ;
+            //    this.result.Text = "sasi";
+            //}
         }
         private string division(TextBox fstLeft, TextBox fstRight, TextBox sndLeft, TextBox sndRight)
         {
@@ -124,7 +153,7 @@ namespace FL1
                     case 7: checkInterv(bLeft, bRight); this.result.Text = subtraction(bLeft, bRight, additional, additional); break;
                     case 8: checkInterv(aLeft, aRight); this.result.Text = multiplication(aLeft, aRight, additional, additional); break;
                     case 9: checkInterv(bLeft, bRight); this.result.Text = division(bLeft, bRight, additional, additional); break;
-                    case 10: multMultiplication(); break;
+                    //case 10: multMultiplication(); break;
                     default: throw new Exception();
                 }
                 string[] tmp = result.Text.Split(' ');
