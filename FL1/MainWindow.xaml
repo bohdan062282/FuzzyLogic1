@@ -55,16 +55,16 @@
             <materialDesign:PackIcon x:Name="widerIcon" Kind="ArrowRight" Width="20" Height="20"></materialDesign:PackIcon>
         </Button>
         <Grid VerticalAlignment="Top" HorizontalAlignment="Left" Margin="400,64,0,0" Background="BlueViolet" Height="300" Width="240">
-            <oxy:Plot Title="{Binding Title}" Background="Purple" TextColor="Aqua">
+            <oxy:Plot x:Name="model"  Title="{Binding Title}" Background="Purple" TextColor="Aqua">
                 <oxy:Plot.Series>
-                    <oxy:LineSeries Color="Coral" ItemsSource="{Binding Points1}"/>
+                    <oxy:LineSeries x:Name="graph1" Color="Coral" ItemsSource="{Binding Points1}"/>
                     <oxy:LineSeries Color="DeepPink" ItemsSource="{Binding Points2}"/>
+                    <oxy:LineSeries Color="Azure"  ItemsSource="{Binding Points3}"/>
                 </oxy:Plot.Series>
             </oxy:Plot>
         </Grid>
-        
     </Grid>
     <Window.DataContext>
-        <local:MainViewModel/>
+        <local:MainViewModel x:Name="viewModel"/>
     </Window.DataContext>
 </Window>
