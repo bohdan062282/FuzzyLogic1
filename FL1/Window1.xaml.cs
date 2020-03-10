@@ -19,9 +19,23 @@ namespace FL1
     /// </summary>
     public partial class Window1 : Window
     {
-        public Window1()
+        private int counter;
+        private int i;
+        private float left;
+        private float right;
+        private TextBlock rez;
+        public Window1(int counter, TextBlock rez)
         {
             InitializeComponent();
+            if (counter < 1)
+            {
+                this.DialogResult = false;
+            }
+            this.counter = counter;
+            this.rez = rez;
+            i = 0;
+            left = 1;
+            right = 1;
         }
 
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
@@ -31,7 +45,49 @@ namespace FL1
 
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            this.DialogResult = false;
+        }
+
+        private void calculate_Click(object sender, RoutedEventArgs e)
+        {
+            checkInterv(aLeft, aRight);
+            if(i < counter)
+            {
+                multiplication();
+                aLeft.Text = null;
+                aRight.Text = null;
+                i++;
+            }
+            if(i == counter)
+            {
+                rez.Text = left.ToString() + ' ' + right.ToString();
+                try
+                {
+                    this.DialogResult = true;
+                }
+                catch(InvalidOperationException ex)
+                {
+                    ;
+                }
+            }
+        }
+
+        private void multiplication()
+        {
+            float[] comb = new float[4];
+
+            comb[0] = left * float.Parse(aLeft.Text);
+            comb[1] = left * float.Parse(aRight.Text);
+            comb[2] = right * float.Parse(aLeft.Text);
+            comb[3] = right * float.Parse(aRight.Text);
+
+            left = comb.Min();
+            right = comb.Max();
+        }
+        private void checkInterv(TextBox left, TextBox right)
+        {
+            if (float.Parse(left.Text) < float.Parse(right.Text)) return;
+            else this.DialogResult = false;
         }
     }
 }

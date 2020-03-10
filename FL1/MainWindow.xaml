@@ -58,8 +58,8 @@
             <oxy:Plot x:Name="model"  Title="{Binding Title}" Background="Purple" TextColor="Aqua">
                 <oxy:Plot.Series>
                     <oxy:LineSeries x:Name="graph1" Color="Coral" ItemsSource="{Binding Points1}"/>
-                    <oxy:LineSeries Color="DeepPink" ItemsSource="{Binding Points2}"/>
-                    <oxy:LineSeries Color="Azure"  ItemsSource="{Binding Points3}"/>
+                    <oxy:LineSeries x:Name="graph2" Color="DeepPink" ItemsSource="{Binding Points2}"/>
+                    <oxy:LineSeries x:Name="graph3" Color="Azure"  ItemsSource="{Binding Points3}"/>
                 </oxy:Plot.Series>
             </oxy:Plot>
         </Grid>
